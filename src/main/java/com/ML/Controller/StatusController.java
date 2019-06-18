@@ -14,6 +14,21 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import net.sf.json.JSONArray;
+import org.apache.commons.io.FileUtils;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+import bean.BPython;
+
 @Controller
 public class StatusController {
 
@@ -47,6 +62,8 @@ public class StatusController {
         file.transferTo(newFile);
         long endTime = System.currentTimeMillis();
         System.out.println("方法二的运行时间：" + String.valueOf(endTime - startTime) + "ms");
-        return "/tasks";
+        JSONArray gbdt=BPython.myrun();
+        System.out.println(gbdt);
+        return "/table";
     }
 }
