@@ -5,6 +5,9 @@
   Time: 14:34
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="java.io.*" %>
+<%@ page import="org.json.*" %>
+<%@ page import="java.math.BigDecimal" %>
 <head>
     <!-- Standard Meta -->
     <meta charset="utf-8"/>
@@ -74,6 +77,48 @@
 
 <br>
 
+<%!
+    public static String readJsonFile(String fileName) {
+        String jsonStr = "";
+        try {
+            File jsonFile = new File(fileName);
+            FileReader fileReader = new FileReader(jsonFile);
+
+            Reader reader = new InputStreamReader(new FileInputStream(jsonFile),"utf-8");
+            int ch = 0;
+            StringBuffer sb = new StringBuffer();
+            while ((ch = reader.read()) != -1) {
+                sb.append((char) ch);
+            }
+            fileReader.close();
+            reader.close();
+            jsonStr = sb.toString();
+            return jsonStr;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+%>
+<%
+
+    try {
+//        修改文件位置
+        String jsonStr=readJsonFile("E:\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
+        JSONObject wholeJSON = new JSONObject(jsonStr);
+        double mse=wholeJSON.getDouble("mse");
+        //利用BigDecimal来实现四舍五入.保留一位小数
+        mse = new BigDecimal(mse).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double rmse=Math.sqrt(mse);
+        double reshaped_rmse=new BigDecimal(rmse).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        JSONObject tableJson=wholeJSON.getJSONObject("table");
+        int resultCount=tableJson.length();
+        double predict,truth,deviation;
+        JSONObject currentResult;
+
+%>
+
 <div class="header">
     <%
         for (int space = 0; space < 8; space++) {
@@ -89,29 +134,14 @@
     <% }%>
     <div class="ui statistic">
         <div class="value">
-            0.55
-<%--            <%=answerList.size()%>--%>
+            <%=reshaped_rmse%>
         </div>
         <div class="label">
-            Results
+            RMSE
         </div>
     </div>
 </div>
-<%
-    int row=0;
-    int col=0;
-    try{
-//    row=Integer.parseInt(request.getParameter("row"));
-        row=10;
-//        col=2;
-//    col=Integer.parseInt(request.getParameter("column"));
-    }catch(Exception ex){
-        out.println("please input integer!");
-        return;
-    }
-    int ground_truth=1;
-    int predict=100;
-%>
+
 <div class="main ui container">
 
     <table class="ui celled table">
@@ -122,13 +152,28 @@
         </tr></thead>
         <tbody>
 
-            <%for(int i=0;i<row;i++){ %>
-        <tr>
-            <td data-label="ground truth"><%=ground_truth%></td>
+            <%for (int i = 0; i < resultCount; i++){%>
+            <%  currentResult=tableJson.getJSONObject(String.valueOf(i));
+                predict=currentResult.getDouble("predict");
+                truth=currentResult.getDouble("test");
+                deviation=Math.abs(predict-truth);
+                if (deviation-rmse<-1){%>
+            <tr class="positive">
+            <%}else if (deviation-rmse<=1 && deviation-rmse>=-1){%>
+            <tr>
+                <%} else{%>
+            <tr class="negative">
+                <%}%>
+            <td data-label="ground truth"><%=truth%></td>
             <td data-label="prediction"><%=predict%></td>
-            <td data-label="deviation"><%=ground_truth-predict%></td>
-        </tr>
-            <%} %>
+            <td data-label="deviation"><%=deviation%></td>
+            </tr>
+                <%}%>
+                <%}catch (Exception e){%>
+            <div class="value">
+                hahaha
+            </div>
+    <%}%>
 
     </table>
 </div>

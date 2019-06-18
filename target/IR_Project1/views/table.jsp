@@ -104,13 +104,13 @@
 <%
 
     try {
-        String jsonStr=readJsonFile("C:\\Users\\ryan_\\IdeaProjects\\001\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
+        String jsonStr=readJsonFile("E:\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
         JSONObject wholeJSON = new JSONObject(jsonStr);
         double mse=wholeJSON.getDouble("mse");
         //利用BigDecimal来实现四舍五入.保留一位小数
         mse = new BigDecimal(mse).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         double rmse=Math.sqrt(mse);
-        rmse=new BigDecimal(rmse).setScale(0, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double reshaped_rmse=new BigDecimal(rmse).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         JSONObject tableJson=wholeJSON.getJSONObject("table");
         int resultCount=tableJson.length();
         double predict,truth,deviation;
@@ -133,10 +133,10 @@
     <% }%>
     <div class="ui statistic">
         <div class="value">
-            <%=mse%>
+            <%=reshaped_rmse%>
         </div>
         <div class="label">
-            MSE
+            RMSE
         </div>
     </div>
 </div>

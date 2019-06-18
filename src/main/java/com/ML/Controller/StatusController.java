@@ -56,14 +56,20 @@ public class StatusController {
     public String fileUpload2(@RequestParam("file") CommonsMultipartFile file) throws IOException {
         long startTime = System.currentTimeMillis();
         System.out.println("fileName：" + file.getOriginalFilename());
-        String path = "./" + file.getOriginalFilename();
+
+//       写死上传到"E:\\data.txt"
+        String path = "E:\\data.txt";
         File newFile = new File(path);
         //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
         file.transferTo(newFile);
         long endTime = System.currentTimeMillis();
         System.out.println("方法二的运行时间：" + String.valueOf(endTime - startTime) + "ms");
-        JSONArray gbdt=BPython.myrun();
-        System.out.println(gbdt);
-        return "/table";
+        if(BPython.myrun()){
+            return "/table";
+        }else {
+            return "/error";
+        }
+
+
     }
 }
