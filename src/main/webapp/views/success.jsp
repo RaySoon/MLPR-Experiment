@@ -166,21 +166,11 @@
 
         <div class="ui text container">
             <h1 class="ui inverted header">
-                MLPR Research
+                Upload Success
             </h1>
-            <h2>
-                Upload File
-            </h2>
-            <%--        <form:form action="/fileUpload" method="post" enctype="multipart/form-data">--%>
-            <%--            <input type="file" name="file">--%>
-            <%--            <input type="submit" value="upload">--%>
-            <%--        </form:form>--%>
-            <form:form name="Form2" action="/fileUpload" method="post" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <button type="submit" class="ui primary button">Upload</button>
-            </form:form>
+
             <br>
-            <a class="ui huge primary button" href="/gbm">Result <i class="right arrow icon"></i></a>
+            <a class="ui huge primary button" href="/home">Back to Home <i class="right arrow icon"></i></a>
         </div>
 
     </div>

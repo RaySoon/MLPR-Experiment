@@ -116,56 +116,57 @@
 <br><br><br>
 
 <div class="ui container">
-    <img class="ui centered large image" src="/image/logo.png">
+    <%--<img class="ui centered large image" src="/image/logo.png">--%>
+
 </div>
 
 <br>
 <div class="ui text container">
     <div class="ui big form">
-        <form:form modelAttribute="search" method="post">
-            <div class="ui centered grid">
-                <div class="field">
-                    <div class="ui massive icon input">
-                        <form:input type="text" path="content" placeholder="Search Papers..."/>
-                        <i class="search icon"></i>
-                    </div>
-                </div>
-            </div>
-            <br><br>
-            <div class="ui centered grid">
-                <div class="fields">
-                    <div class="field">
-                        <select class="ui compact selection dropdown" name="type1">
-                            <option value="fulltext">fulltext</option>
-                            <option value="title">title</option>
-                            <option value="author">author</option>
-                        </select>
-                    </div>
-                    <div class="field"></div>
-                    <button class="ui button" type="submit">Search</button>
-                </div>
-            </div>
-            <div class="ui centered grid">
-                <div class="field">
-                    <div class="has-error" style="color: red">
-                        <form:errors path="content" class="help-inline"/>
-                    </div>
-                    <%
-                        String codeError = (String) request.getAttribute("codeError");
-                        if (codeError != null) {
-                    %>
-                    <div class="field">
-                        <div class="ERROR" style="color: red">
-                            <p>The keyword must be encoded in English.</p>
-                        </div>
-                    </div>
-                    <%
-                        }
-                    %>
-                </div>
-            </div>
+        <%--<form:form modelAttribute="search" method="post">--%>
+            <%--<div class="ui centered grid">--%>
+                <%--<div class="field">--%>
+                    <%--<div class="ui massive icon input">--%>
+                        <%--<form:input type="text" path="content" placeholder="Search Papers..."/>--%>
+                        <%--<i class="search icon"></i>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<br><br>--%>
+            <%--<div class="ui centered grid">--%>
+                <%--<div class="fields">--%>
+                    <%--<div class="field">--%>
+                        <%--<select class="ui compact selection dropdown" name="type1">--%>
+                            <%--<option value="fulltext">fulltext</option>--%>
+                            <%--<option value="title">title</option>--%>
+                            <%--<option value="author">author</option>--%>
+                        <%--</select>--%>
+                    <%--</div>--%>
+                    <%--<div class="field"></div>--%>
+                    <%--<button class="ui button" type="submit">Search</button>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="ui centered grid">--%>
+                <%--<div class="field">--%>
+                    <%--<div class="has-error" style="color: red">--%>
+                        <%--<form:errors path="content" class="help-inline"/>--%>
+                    <%--</div>--%>
+                    <%--<%--%>
+                        <%--String codeError = (String) request.getAttribute("codeError");--%>
+                        <%--if (codeError != null) {--%>
+                    <%--%>--%>
+                    <%--<div class="field">--%>
+                        <%--<div class="ERROR" style="color: red">--%>
+                            <%--<p>The keyword must be encoded in English.</p>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<%--%>
+                        <%--}--%>
+                    <%--%>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
-        </form:form>
+        <%--</form:form>--%>
     </div>
 </div>
 

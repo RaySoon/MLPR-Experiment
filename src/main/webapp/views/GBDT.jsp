@@ -66,10 +66,12 @@
     <div class="ui large top menu">
         <div class="ui container">
             <a class="item" href="/home">Home</a>
-            <a class="item" href="/search">Search</a>
-            <a class="active item" href="/tasks">Tasks</a>
+            <a class="item" href="/gbm">LightGBM</a>
+            <a class="active item" href="/gbdt">GBDT</a>
+            <a class="item" href="/rf">RF</a>
+            <a class="item" href="/tensorflow">TensorFlow</a>
             <div class="right menu">
-                <a class="item" href="/members">Members</a>
+                <a class="item" href="/linear">Linear</a>
             </div>
         </div>
     </div>

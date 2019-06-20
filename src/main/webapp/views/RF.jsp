@@ -66,10 +66,12 @@
     <div class="ui large top menu">
         <div class="ui container">
             <a class="item" href="/home">Home</a>
-            <a class="item" href="/search">Search</a>
-            <a class="active item" href="/tasks">Tasks</a>
+            <a class="item" href="/gbm">LightGBM</a>
+            <a class="item" href="/gbdt">GBDT</a>
+            <a class="active item" href="/rf">RF</a>
+            <a class="item" href="/tensorflow">TensorFlow</a>
             <div class="right menu">
-                <a class="item" href="/members">Members</a>
+                <a class="item" href="/linear">Linear</a>
             </div>
         </div>
     </div>
@@ -105,7 +107,7 @@
 
     try {
 //        修改文件位置
-        String jsonStr=readJsonFile("F:\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
+        String jsonStr=readJsonFile("F:\\MLPR-Experiment\\python\\rf\\rf.json");
         JSONObject wholeJSON = new JSONObject(jsonStr);
         double mse=wholeJSON.getDouble("mse");
         //利用BigDecimal来实现四舍五入.保留一位小数

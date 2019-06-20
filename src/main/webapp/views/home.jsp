@@ -144,17 +144,6 @@
 </head>
 <body>
 
-<!-- Following Menu -->
-<div class="ui large top fixed hidden menu">
-    <div class="ui container">
-        <a class="active item" href="/home">Home</a>
-        <%--        <a class="item" href="/tasks">Tasks</a>--%>
-        <a class="item" href="/table">Table</a>
-        <div class="right menu">
-            <a class="item" href="/members">Members</a>
-        </div>
-    </div>
-</div>
 
 <!-- Page Contents -->
 <div class="pusher">
@@ -166,11 +155,11 @@
                     <i class="sidebar icon"></i>
                 </a>
                 <a class="active item" href="/home">Home</a>
-                <a class="item" href="/tasks">Tasks</a>
-                <a class="item" href="/table">Table</a>
-                <div class="right item">
-                    <a class="item" href="/members">Members</a>
-                </div>
+                <%--<a class="item" href="/search">Tasks</a>--%>
+                <%--<a class="item" href="/table">Table</a>--%>
+                <%--<div class="right item">--%>
+                    <%--<a class="item" href="/members">Members</a>--%>
+                <%--</div>--%>
             </div>
         </div>
 
@@ -190,33 +179,35 @@
                 <input type="file" name="file">
                 <button type="submit" class="ui primary button">Upload</button>
             </form:form>
+            <br>
+            <a class="ui huge primary button" href="/gbm">Result <i class="right arrow icon"></i></a>
         </div>
 
     </div>
 
 
-    <div class="ui inverted vertical footer segment">
-        <div class="ui container">
-            <div class="ui stackable inverted divided equal height stackable grid">
-                <div class="five wide column">
-                    <h4 class="ui inverted header">About</h4>
-                    <div class="ui inverted link list">
-                        <a href="/members" class="item">About Us</a>
-                        <a href="http://miner.picp.net/members/Yan/teaching/IR2016Spring.html" class="item">About This
-                            Course</a>
-                        <a href="http://en.cufe.edu.cn/" class="item">About CUFE</a>
-                    </div>
-                </div>
-                <div class="seven wide column">
-                    <h4 class="ui inverted header">Download</h4>
-                    <a href="/pdf/Pre.pdf" class="item">Pre</a>
-                    <%--<h4 class="ui inverted header">Source Code</h4>--%>
-                    <%--<a href="https://github.com/RaySoon/CUFE-Information-Retrieval-Course-Project-1" class="item">GitHub--%>
-                    <%--Link</a>--%>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%--<div class="ui inverted vertical footer segment">--%>
+        <%--<div class="ui container">--%>
+            <%--<div class="ui stackable inverted divided equal height stackable grid">--%>
+                <%--<div class="five wide column">--%>
+                    <%--<h4 class="ui inverted header">About</h4>--%>
+                    <%--<div class="ui inverted link list">--%>
+                        <%--<a href="/members" class="item">About Us</a>--%>
+                        <%--<a href="http://miner.picp.net/members/Yan/teaching/IR2016Spring.html" class="item">About This--%>
+                            <%--Course</a>--%>
+                        <%--<a href="http://en.cufe.edu.cn/" class="item">About CUFE</a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<div class="seven wide column">--%>
+                    <%--<h4 class="ui inverted header">Download</h4>--%>
+                    <%--<a href="/pdf/Pre.pdf" class="item">Pre</a>--%>
+                    <%--&lt;%&ndash;<h4 class="ui inverted header">Source Code</h4>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<a href="https://github.com/RaySoon/CUFE-Information-Retrieval-Course-Project-1" class="item">GitHub&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;Link</a>&ndash;%&gt;--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 </div>
 
 </body>

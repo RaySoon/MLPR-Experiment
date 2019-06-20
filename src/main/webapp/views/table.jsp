@@ -105,7 +105,7 @@
 
     try {
 //        修改文件位置
-        String jsonStr=readJsonFile("E:\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
+        String jsonStr=readJsonFile("F:\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
         JSONObject wholeJSON = new JSONObject(jsonStr);
         double mse=wholeJSON.getDouble("mse");
         //利用BigDecimal来实现四舍五入.保留一位小数
