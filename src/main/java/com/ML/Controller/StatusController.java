@@ -82,13 +82,19 @@ public class StatusController {
         long startTime = System.currentTimeMillis();
         System.out.println("fileName：" + file.getOriginalFilename());
 
-//       写死上传到"E:\\data.txt"
-        String path = "F:\\MLPR-Experiment\\python\\"+ file.getOriginalFilename();
+//        String path = "F:\\MLPR-Experiment\\python\\"+ file.getOriginalFilename();
+
+        String path="";
+        if ("data.txt".equals( file.getOriginalFilename())){
+            //       写死上传到"E:\\data.txt"
+            path = "E:\\data.txt";
+        }else{
+            path = "E:\\score.txt";
+        }
         File newFile = new File(path);
-        //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
         file.transferTo(newFile);
-        long endTime = System.currentTimeMillis();
-        System.out.println("方法二的运行时间：" + String.valueOf(endTime - startTime) + "ms");
+
+//      TODO： 将挪到前端result的逻辑里
         if(BPython.myrun()){
             return "/success";
         }else {

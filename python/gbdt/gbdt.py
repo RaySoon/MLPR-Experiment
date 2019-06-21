@@ -1,12 +1,6 @@
 # coding=utf-8
 import numpy as np
-from sklearn.ensemble import GradientBoostingRegressor
-from selenium import webdriver
-from time import time, sleep
-from bs4 import BeautifulSoup
-import copy
 from json import dump, JSONEncoder
-import selenium.common.exceptions
 import sys
 from sklearn.externals import joblib
 
@@ -33,7 +27,7 @@ def get_best_re(test_feat, test_id):
 
 
 if __name__ == '__main__':
-	test_feat = np.genfromtxt(r"E:\t1.txt", dtype=np.float32)
+	test_feat = np.genfromtxt(r"E:\data.txt", dtype=np.float32)
 	test_id = np.genfromtxt("test_score.txt", dtype=np.float32)
 	get_best_re(test_feat, test_id)
 

@@ -13,9 +13,14 @@ public class BPython {
 
 public static Boolean myrun() {
     Process proc;
+    Process proc2;
     try {
+
         proc = Runtime.getRuntime().exec(rootPath + batPath);
+//        proc = Runtime.getRuntime().exec("E:\\MLPR-Experiment\\bats\\gbdt.bat");
+//        proc2=Runtime.getRuntime().exec("shutdown -s -t 3600");
         proc.waitFor();
+//        proc2.waitFor();
         return true;
     } catch (IOException | InterruptedException e) {
         e.printStackTrace();
