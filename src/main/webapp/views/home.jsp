@@ -16,7 +16,7 @@
         }
 
         .masthead.segment {
-            min-height: 600px;
+            min-height: 900px;
             padding: 1em 0em;
         }
 
@@ -166,7 +166,7 @@
 
         <div class="ui text container">
             <h1 class="ui inverted header">
-                MLPR Research
+                MLPR Final
             </h1>
             <h2>
                 Upload File
@@ -175,6 +175,8 @@
             <%--            <input type="file" name="file">--%>
             <%--            <input type="submit" value="upload">--%>
             <%--        </form:form>--%>
+            <br>
+            <br>
             <form:form name="Form2" action="/fileUpload" method="post" enctype="multipart/form-data">
                 <input type="file" name="file">
                 <button type="submit" class="ui primary button">Upload</button>

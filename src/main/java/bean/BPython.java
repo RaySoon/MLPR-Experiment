@@ -8,26 +8,18 @@ import java.io.*;
 public class BPython {
     //调用运行.bat文件。
     // 修改rootPath和.bat文件即可运行
-    private static String rootPath = "E:\\MLPR-Experiment";
-    private static String batPath = "\\bats\\gbdt.bat";
+    private static String rootPath = "E:\\MLPR-Experiment\\bats\\";
 
-public static Boolean myrun() {
-    Process proc;
-    Process proc2;
-    try {
-
-        proc = Runtime.getRuntime().exec(rootPath + batPath);
-//        proc = Runtime.getRuntime().exec("E:\\MLPR-Experiment\\bats\\gbdt.bat");
-//        proc2=Runtime.getRuntime().exec("shutdown -s -t 3600");
-        proc.waitFor();
-//        proc2.waitFor();
-        return true;
-    } catch (IOException | InterruptedException e) {
-        e.printStackTrace();
+    public static Boolean Run(String path) {
+        Process proc;
+        try {
+            proc = Runtime.getRuntime().exec(rootPath + path);
+            proc.waitFor();
+            return true;
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-    return false;
-//    System.out.println("END！");
-}
-
 }
 

@@ -71,7 +71,7 @@
             <a class="item" href="/rf">RF</a>
             <a class="item" href="/tensorflow">TensorFlow</a>
             <div class="right menu">
-                <a class="item" href="/linear">Linear</a>
+                <a class="item" href="/XGBoost">XGBoost</a>
             </div>
         </div>
     </div>
@@ -97,6 +97,7 @@
             jsonStr = sb.toString();
             return jsonStr;
         } catch (IOException e) {
+            System.out.println(fileName+"不存在!");
             e.printStackTrace();
             return null;
         }
@@ -108,6 +109,7 @@
     try {
 //        修改文件位置
         String jsonStr=readJsonFile("E:\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
+
         JSONObject wholeJSON = new JSONObject(jsonStr);
         double mse=wholeJSON.getDouble("mse");
         //利用BigDecimal来实现四舍五入.保留一位小数

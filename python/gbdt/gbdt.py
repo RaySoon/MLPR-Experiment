@@ -28,7 +28,7 @@ def get_best_re(test_feat, test_id):
 
 if __name__ == '__main__':
 	test_feat = np.genfromtxt(r"E:\data.txt", dtype=np.float32)
-	test_id = np.genfromtxt("test_score.txt", dtype=np.float32)
+	test_id = np.genfromtxt("E:\score.txt", dtype=np.float32)
 	get_best_re(test_feat, test_id)
 
 # 一般的JSON格式

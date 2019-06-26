@@ -39,21 +39,41 @@ public class StatusController {
 
     @RequestMapping(value = "/gbm", method = {RequestMethod.GET})
     public String gbm() {
+        File gbmJson=new File("E:\\MLPR-Experiment\\python\\lightGBM\\lightGBM.json");
+        if(!gbmJson.exists()) {
+            System.out.println("找不到，重新生成！");
+            BPython.Run("lightGBM.bat");
+        }
         return "LightGBM";
     }
 
-    @RequestMapping(value = "/linear", method = {RequestMethod.GET})
+    @RequestMapping(value = "/XGBoost", method = {RequestMethod.GET})
     public String linear() {
-        return "Linear";
+        File XGBoostJson=new File("E:\\MLPR-Experiment\\python\\XGBoost\\xgb.json");
+        if(!XGBoostJson.exists()) {
+            System.out.println("找不到，重新生成！");
+            BPython.Run("xgboost.bat");
+        }
+        return "XGBoost";
     }
 
     @RequestMapping(value = "/gbdt", method = {RequestMethod.GET})
     public String gbdt() {
+        File gbdtJson=new File("E:\\MLPR-Experiment\\python\\gbdt\\gbdt.json");
+        if(!gbdtJson.exists()) {
+            System.out.println("找不到，重新生成！");
+            BPython.Run("gbdt.bat");
+        }
         return "GBDT";
     }
 
     @RequestMapping(value = "/rf", method = {RequestMethod.GET})
     public String rf() {
+        File rfJson=new File("E:\\MLPR-Experiment\\python\\rf\\rf.json");
+        if(!rfJson.exists()) {
+            System.out.println("找不到，重新生成！");
+            BPython.Run("rf.bat");
+        }
         return "RF";
     }
 
@@ -62,11 +82,6 @@ public class StatusController {
         return "tensorflow";
     }
 
-//    @RequestMapping(value = "/tasks", method = {RequestMethod.GET})
-//    public String tasks() {
-//        return "tasks";
-//    }
-//
     @RequestMapping(value = "/table", method = {RequestMethod.GET})
     public String table() {
         return "table";
@@ -79,28 +94,18 @@ public class StatusController {
 
     @RequestMapping(value = "/fileUpload")
     public String fileUpload2(@RequestParam("file") CommonsMultipartFile file) throws IOException {
-        long startTime = System.currentTimeMillis();
         System.out.println("fileName：" + file.getOriginalFilename());
-
-//        String path = "F:\\MLPR-Experiment\\python\\"+ file.getOriginalFilename();
-
         String path="";
         if ("data.txt".equals( file.getOriginalFilename())){
-            //       写死上传到"E:\\data.txt"
             path = "E:\\data.txt";
         }else{
             path = "E:\\score.txt";
         }
         File newFile = new File(path);
-        file.transferTo(newFile);
-
-//      TODO： 将挪到前端result的逻辑里
-        if(BPython.myrun()){
-            return "/success";
-        }else {
-            return "/error";
+        if(newFile.exists()){
+            newFile.delete();
         }
-
-
+        file.transferTo(newFile);
+        return "/success";
     }
 }

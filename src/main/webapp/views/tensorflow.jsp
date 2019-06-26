@@ -71,7 +71,7 @@
             <a class="item" href="/rf">RF</a>
             <a class="active item" href="/tensorflow">TensorFlow</a>
             <div class="right menu">
-                <a class="item" href="/linear">Linear</a>
+                <a class="item" href="/XGBoost">XGBoost</a>
             </div>
         </div>
     </div>
@@ -107,12 +107,12 @@
 
     try {
 //        修改文件位置
-        String jsonStr=readJsonFile("F:\\MLPR-Experiment\\python\\tensorflow\\tensorflow.json");
+        String jsonStr=readJsonFile("E:\\MLPR-Experiment\\python\\tensorflow\\tensorflow.json");
         JSONObject wholeJSON = new JSONObject(jsonStr);
         double mse=wholeJSON.getDouble("mse");
         //利用BigDecimal来实现四舍五入.保留一位小数
         mse = new BigDecimal(mse).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double rmse=Math.sqrt(mse);
+        double rmse=mse;
         double reshaped_rmse=new BigDecimal(rmse).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         JSONObject tableJson=wholeJSON.getJSONObject("table");
         int resultCount=tableJson.length();
@@ -157,8 +157,10 @@
             <%for (int i = 0; i < resultCount; i++){%>
             <%  currentResult=tableJson.getJSONObject(String.valueOf(i));
                 predict=currentResult.getDouble("predict");
+                predict= new BigDecimal(predict).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
                 truth=currentResult.getDouble("test");
                 deviation=Math.abs(predict-truth);
+                deviation= new BigDecimal(deviation).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
                 if (deviation-rmse<-1){%>
             <tr class="positive">
             <%}else if (deviation-rmse<=1 && deviation-rmse>=-1){%>
